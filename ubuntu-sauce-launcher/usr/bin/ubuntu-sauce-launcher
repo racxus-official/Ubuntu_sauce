@@ -1,0 +1,54 @@
+#!/bin/bash
+# Ubuntu Sauce Launcher - Interface Gráfica
+# Maintainer: Berttone AKA Racxus
+
+show_main_interface() {
+    choice=$(zenity --question \
+        --title="Ubuntu Sauce - Berttone AKA Racxus" \
+        --text="<b>Instalador de Codecs Ubuntu Sauce</b>\n\nEste instalador vai adicionar:\n• FFmpeg e codecs de vídeo\n• Ubuntu Restricted Extras\n• Drivers Mesa VA-API\n• Suporte a DVD\n• Codecs AV1 e H.264\n\nDeseja continuar com a instalação?" \
+        --ok-label="Instalar Codecs" \
+        --cancel-label="Sair" \
+        --width=450 \
+        --height=250)
+    
+    if [ $? -eq 0 ]; then
+        install_codecs
+    else
+        zenity --info \
+            --title="Ubuntu Sauce" \
+            --text="Instalação cancelada.\n\nVocê pode executar novamente pelo menu de aplicativos." \
+            --width=300
+        exit 0
+    fi
+}
+
+install_codecs() {
+    (
+        echo "10" ; echo "# Atualizando lista de pacotes..." ; sudo apt update > /dev/null 2>&1
+        echo "30" ; echo "# Instalando FFmpeg..." ; sudo apt install -y ffmpeg > /dev/null 2>&1
+        echo "50" ; echo "# Instalando Ubuntu Restricted Extras..." ; sudo apt install -y ubuntu-restricted-extras > /dev/null 2>&1
+        echo "70" ; echo "# Instalando codecs extras..." ; sudo apt install -y libavcodec-extra mesa-va-drivers > /dev/null 2>&1
+        echo "85" ; echo "# Instalando suporte a DVD..." ; sudo apt install -y libdvd-pkg > /dev/null 2>&1
+        echo "90" ; echo "# Configurando pacotes..." ; sudo dpkg-reconfigure libdvd-pkg -f noninteractive > /dev/null 2>&1
+        echo "100" ; echo "# Finalizando instalação..." ; sleep 2
+    ) | zenity --progress \
+        --title="Instalando Codecs" \
+        --text="Preparando instalação..." \
+        --percentage=0 \
+        --auto-close \
+        --width=400
+    
+    if [ $? -eq 0 ]; then
+        zenity --info \
+            --title="Instalação Concluída" \
+            --text="✅ <b>Todos os codecs foram instalados com sucesso!</b>\n\n🎬 Agora você tem suporte completo a vídeos e áudio.\n\nSistema preparado para multimídia!" \
+            --width=400
+    else
+        zenity --warning \
+            --title="Aviso" \
+            --text="⚠ A instalação pode não ter sido completada.\n\nExecute no terminal:\n<b>sudo apt install -f</b>" \
+            --width=350
+    fi
+}
+
+show_main_interface

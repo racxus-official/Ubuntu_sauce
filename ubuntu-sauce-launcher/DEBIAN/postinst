@@ -1,0 +1,5 @@
+#!/bin/bash
+chmod +x /usr/bin/ubuntu-sauce-launcher
+update-desktop-database /usr/share/applications > /dev/null 2>&1
+echo "Ubuntu Sauce Launcher instalado com sucesso!"
+echo "Procure por 'Ubuntu Sauce' no menu de aplicativos."

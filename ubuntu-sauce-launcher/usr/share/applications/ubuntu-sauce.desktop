@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ubuntu Sauce Installer
+Comment=Instalador de codecs por Berttone AKA Racxus
+Exec=ubuntu-sauce-launcher
+Icon=system-software-install
+Categories=System;
+Terminal=false
+StartupNotify=true
+Keywords=codec;video;audio;installer;

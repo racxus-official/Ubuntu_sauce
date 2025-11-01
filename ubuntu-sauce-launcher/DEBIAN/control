@@ -1,0 +1,9 @@
+Package: ubuntu-sauce-launcher
+Version: 1.0
+Section: misc
+Priority: optional
+Architecture: all
+Depends: zenity
+Maintainer: Berttone AKA Racxus
+Description: Launcher para instalação de codecs Ubuntu Sauce
+ Interface gráfica para instalação de codecs e plugins multimídia.
