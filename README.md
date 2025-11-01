@@ -98,3 +98,11 @@ Once Ubuntu Sauce completes its magic, your system will enjoy:
 
 ---
 **🎉 Transform Your Multimedia Experience Today!**
+
+Download here:
+
+English
+https://github.com/racxus-official/Ubuntu_sauce/blob/main/ubuntu-sauce-en.deb
+
+Portuguese
+https://github.com/racxus-official/Ubuntu_sauce/blob/main/ubuntu-sauce-launcher.deb
